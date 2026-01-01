@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+
+  #  start Postgres, and ensure that data is stored to a mounted volume
+  postgres:
+    image: 'postgres:16.3'
+    container_name: postgres_container
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: adminPassword
+      POSTGRES_DB: tasks
+    volumes:
+      - ./db-data/postgres/:/var/lib/postgresql/data/
